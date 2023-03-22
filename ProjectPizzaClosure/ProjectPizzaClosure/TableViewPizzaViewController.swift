@@ -20,3 +20,21 @@ class TableViewPizzaViewController: UIViewController {
     }
 
 }
+extension TableViewPizzaViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.arrayPizza?.count ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? PizzaTableViewCell {
+            
+            cell.setupPizza(pizza: arrayPizza?[indexPath.row])
+            
+            return cell
+        }
+        
+        return UITableViewCell()
+    }
+    
+    
+}
