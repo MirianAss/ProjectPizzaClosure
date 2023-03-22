@@ -13,10 +13,18 @@ class TableViewPizzaViewController: UIViewController {
     
     var arrayPizza: Pizza?
     
+    let request = Request()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        tableView.dataSource = self
+        tableView.register(UINib(nibName: "PizzaTableViewCell", bundle: nil), forCellReuseIdentifier: "cell")
+        
+        request.requestPizza { arrayDePizza in
+            self.arrayPizza = arrayDePizza
+            self.tableView.reloadData()
+        }
     }
 
 }
