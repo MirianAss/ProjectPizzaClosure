@@ -17,11 +17,13 @@ class ScreenRatingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        let urlImage = URL(string: rating?.imageURL ?? "")
+        imagePizza.sd_setImage(with: urlImage)
+        lblRatingPizza.text = "A pizza de \(rating?.name ?? "") possui a nota de: \(rating?.rating ?? 0)/5"
     }
     
     @IBAction func btBack(_ sender: Any) {
-        
+        self.navigationController?.popToRootViewController(animated: true)
     }
     
 }
